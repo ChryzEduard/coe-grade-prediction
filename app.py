@@ -3,7 +3,7 @@ import pickle
 import numpy as np
 
 
-##from sklearn.tree import DecisionTreeClassifier
+from sklearn.tree import DecisionTreeClassifier
 ##dtree = DecisionTreeClassifier
 
 st.set_page_config(
@@ -23,6 +23,8 @@ def load_eat_model():
         eat_model = pickle.load(file)
     return eat_model
 
+dtree_cet = load_cet_model()
+#dtree_eat = load_eat_model()
 
 ## EnglishProficiency	ReadingComprehenshion	ScienceProcessSkills	QuantitativeSkills	AbstractThinkingSkills	
 ## Vocabulary	Knowledge&Comprehenshion	AbstractReasoning	ComputationalSkill	LogicalReasoning
@@ -96,5 +98,17 @@ with c2:
 predict_call = st.button("Predict")
 
 if predict_call:
-    st.write("""CET = """, ep, rc, sps, qs, ats,)
-    st.write("""EAT = """, voc, kc, ar, cs, lr,)
+    #load_cet_model
+    entrance_data_x = np.array([[ep, rc, sps, qs, ats,]])
+    aptitude_data_x = np.array([[voc, kc, ar, cs, lr]])
+    entrance_data_x = entrance_data_x.astype(float) 
+    #aptitude_data_x = aptitude_data_x.astype(float)
+
+    test_predict = dtree_cet.predict(entrance_data_x)
+    #st.subheader(f"Test prediction is {test_predict[0]:.2f}")
+    st.subheader(f"CET array is {entrance_data_x}") 
+    st.subheader(f"EAT array is {aptitude_data_x}") 
+    st.subheader(f"Test prediction is {test_predict[0]:.2f}")
+
+    #st.write("""CET = """, ep, rc, sps, qs, ats,)
+    #st.write("""EAT = """, voc, kc, ar, cs, lr,)

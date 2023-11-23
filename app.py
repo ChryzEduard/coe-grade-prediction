@@ -3,7 +3,7 @@ import pickle
 import numpy as np
 
 
-##from sklearn.tree import DecisionTreeClassifier
+from sklearn.tree import DecisionTreeClassifier
 ##dtree = DecisionTreeClassifier
 
 st.set_page_config(
@@ -14,7 +14,6 @@ st.set_page_config(
 )
 
 def load_cet_model():
-    #with open("entrance-board-prediction_decision-tree.pkl", "rb") as file:
     with open("dt_cet_model.pkl", "rb") as file:
         cet_model = pickle.load(file)
     return cet_model

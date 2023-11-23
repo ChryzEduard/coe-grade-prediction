@@ -3,7 +3,7 @@ import pickle
 import numpy as np
 
 
-##from sklearn.tree import DecisionTreeClassifier
+from sklearn.tree import DecisionTreeClassifier
 ##dtree = DecisionTreeClassifier
 
 st.set_page_config(
@@ -14,15 +14,18 @@ st.set_page_config(
 )
 
 def load_cet_model():
-    with open("entrance-board-prediction_decision-tree.pkl", "rb") as file:
+    #with open("entrance-board-prediction_decision-tree.pkl", "rb") as file:
+    with open("dt_cet_model.pkl", "rb") as file:
         cet_model = pickle.load(file)
     return cet_model
 
 def load_eat_model():
-    with (open("aptitude-board-prediction_decision-tree.pkl", "rb")) as file:
+    with (open("dt_eat_model.pkl", "rb")) as file:
         eat_model = pickle.load(file)
     return eat_model
 
+dt_classifier_cet = load_cet_model()
+dt_classifier_eat = load_eat_model()
 
 ## EnglishProficiency	ReadingComprehenshion	ScienceProcessSkills	QuantitativeSkills	AbstractThinkingSkills	
 ## Vocabulary	Knowledge&Comprehenshion	AbstractReasoning	ComputationalSkill	LogicalReasoning
@@ -96,5 +99,17 @@ with c2:
 predict_call = st.button("Predict")
 
 if predict_call:
-    st.write("""CET = """, ep, rc, sps, qs, ats,)
-    st.write("""EAT = """, voc, kc, ar, cs, lr,)
+    cet_result = "Fail"
+    eat_result = "Fail"
+    entrance_data_x = np.array([[ep, rc, sps, qs, ats]])
+    aptitude_data_x = np.array([[voc, kc, ar, cs, lr]])
+
+    # Make predictions
+    cet_predictions = dt_classifier_cet.predict(entrance_data_x)
+    if cet_predictions[0] == 1:
+        cet_result = "Pass"
+    st.subheader(f"CET prediction is: {cet_result}")
+    eat_predictions = dt_classifier_eat.predict(entrance_data_x)
+    if eat_predictions[0] == 1:
+        eat_result = "Pass"
+    st.subheader(f"EAT prediction is: {eat_result}")

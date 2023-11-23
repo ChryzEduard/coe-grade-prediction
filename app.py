@@ -1,5 +1,4 @@
 import streamlit as st
-import sklearn
 import pickle
 import numpy as np
 
@@ -20,7 +19,7 @@ def load_cet_model():
     return cet_model
 
 def load_eat_model():
-    with (open("dt_eat_model.pkl", "rb")) as file:
+    with (open("dt_eat2_model.pkl", "rb")) as file:
         eat_model = pickle.load(file)
     return eat_model
 
@@ -109,7 +108,8 @@ if predict_call:
     if cet_predictions[0] == 1:
         cet_result = "Pass"
     st.subheader(f"CET prediction is: {cet_result}")
-    eat_predictions = dt_classifier_eat.predict(entrance_data_x)
+
+    eat_predictions = dt_classifier_eat.predict(aptitude_data_x)
     if eat_predictions[0] == 1:
         eat_result = "Pass"
     st.subheader(f"EAT prediction is: {eat_result}")

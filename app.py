@@ -3,7 +3,7 @@ import pickle
 import numpy as np
 
 
-from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble import RandomForestRegressor
 ##dtree = DecisionTreeClassifier
 
 st.set_page_config(
@@ -13,18 +13,13 @@ st.set_page_config(
     layout = "wide",
 )
 
-def load_cet_model():
-    with open("dt_cet_model.pkl", "rb") as file:
-        cet_model = pickle.load(file)
-    return cet_model
+def load_eng_model():
+    with open("rf_eng_model.pkl", "rb") as file:
+        eng_model = pickle.load(file)
+    return eng_model
 
-def load_eat_model():
-    with (open("dt_eat2_model.pkl", "rb")) as file:
-        eat_model = pickle.load(file)
-    return eat_model
 
-dt_classifier_cet = load_cet_model()
-dt_classifier_eat = load_eat_model()
+dt_regressor_main = load_eng_model()
 
 ## EnglishProficiency	ReadingComprehenshion	ScienceProcessSkills	QuantitativeSkills	AbstractThinkingSkills	
 ## Vocabulary	Knowledge&Comprehenshion	AbstractReasoning	ComputationalSkill	LogicalReasoning
@@ -94,22 +89,18 @@ with c2:
         min_value = 0,      # Minimum
         max_value = 30      # Maximum
    )
+reg = st.number_input(   # CHANGE
+     "Are you a regular student?", # Input title
+      min_value = 0,      # Minimum
+      max_value = 30      # Maximum
+ )
 
 predict_call = st.button("Predict")
 
 if predict_call:
-    cet_result = "Fail"
-    eat_result = "Fail"
-    entrance_data_x = np.array([[ep, rc, sps, qs, ats]])
-    aptitude_data_x = np.array([[voc, kc, ar, cs, lr]])
+    main_data_x = np.array([[ep, rc, sps, qs, ats, voc, kc, ar, cs, lr, reg]])
 
     # Make predictions
-    cet_predictions = dt_classifier_cet.predict(entrance_data_x)
-    if cet_predictions[0] == 1:
-        cet_result = "Pass"
-    st.subheader(f"CET prediction is: {cet_result}")
-
-    eat_predictions = dt_classifier_eat.predict(aptitude_data_x)
-    if eat_predictions[0] == 1:
-        eat_result = "Pass"
-    st.subheader(f"EAT prediction is: {eat_result}")
+    main_predictions = dt_regressor_main.predict(main_data_x)
+    percent_prediction = main_predictions * 100
+    st.subheader(f"Prediction is: {percent_prediction}%")

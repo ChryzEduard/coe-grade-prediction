@@ -19,7 +19,7 @@ def load_eng_model():
     return eng_model
 
 
-rf_regressor_main = load_eng_model()
+dt_regressor_main = load_eng_model()
 
 ## EnglishProficiency	ReadingComprehenshion	ScienceProcessSkills	QuantitativeSkills	AbstractThinkingSkills	
 ## Vocabulary	Knowledge&Comprehenshion	AbstractReasoning	ComputationalSkill	LogicalReasoning
@@ -106,6 +106,6 @@ if predict_call:
     main_data_x = np.array([[English_Proficiency, Reading_Comprehenshion, Science_Process_Skills, Quantitative_Skills, Abstract_Thinking_Skills, Vocabulary, Knowledge_and_Comprehenshion, Abstract_Reasoning	, Computational_Skill	, Logical_Reasoning, Is_Regular]])
 
     # Make predictions
-    main_predictions = rf_regressor_main.predict(main_data_x)
+    main_predictions = dt_regressor_main.predict(main_data_x)
     percent_prediction = main_predictions * 100
     st.subheader(f"Prediction is: {percent_prediction}%")

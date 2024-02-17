@@ -67,33 +67,38 @@ with c2:
    voc = st.number_input(
        "Vocabulary",        # Input title
         min_value = 0,      # Minimum
-        max_value = 30      # Maximum
+        max_value = 100      # Maximum
    )
    kc = st.number_input(
        "Knowledge & Comprehension", # Input title
         min_value = 0,              # Minimum
-        max_value = 30              # Maximum
+        max_value = 100              # Maximum
    )
    ar = st.number_input(
        "Abstract Reasoning", # Input title
         min_value = 0,       # Minimum
-        max_value = 30       # Maximum
+        max_value = 100       # Maximum
    )
    cs = st.number_input(
        "Computational Skill", # Input title
         min_value = 0,        # Minimum
-        max_value = 30        # Maximum
+        max_value = 100        # Maximum
    )
    lr = st.number_input(
        "Logical Reasoning", # Input title
         min_value = 0,      # Minimum
-        max_value = 30      # Maximum
+        max_value = 100      # Maximum
    )
-reg = st.number_input(   # CHANGE
-     "Are you a regular student?", # Input title
-      min_value = 0,      # Minimum
-      max_value = 30      # Maximum
+reg = st.radio(   # CHANGE
+     "Are you a regular student?",  # Input title
+      ["Yes", "No"],                # Choices
  )
+
+
+if reg == 'Yes':
+    reg = 1
+else:
+    reg = 0
 
 predict_call = st.button("Predict")
 

@@ -14,12 +14,12 @@ st.set_page_config(
 )
 
 def load_eng_model():
-    with open("rf_eng_model.pkl", "rb") as file:
+    with open("rf_student_model.pkl", "rb") as file:
         eng_model = pickle.load(file)
     return eng_model
 
 
-dt_regressor_main = load_eng_model()
+rf_regressor_main = load_eng_model()
 
 ## EnglishProficiency	ReadingComprehenshion	ScienceProcessSkills	QuantitativeSkills	AbstractThinkingSkills	
 ## Vocabulary	Knowledge&Comprehenshion	AbstractReasoning	ComputationalSkill	LogicalReasoning
@@ -34,27 +34,27 @@ Prediction of Students Success in Engineering Board Exams
 c1, c2 = st.columns(2)
 with c1:
    st.write("### CET Results")
-   ep = st.number_input(
+   English_Proficiency = st.number_input(
        "English Proficiency", # Input title
         min_value = 0.00,     # Minimum
         max_value = 100.00,    # Maximum
    )
-   rc = st.number_input(
+   Reading_Comprehenshion = st.number_input(
        "Reading Comprehension", # Input title
         min_value = 0.00,       # Minimum
         max_value = 100.00      # Maximum
    )
-   sps = st.number_input(
+   Science_Process_Skills = st.number_input(
        "Science Process Skills",    # Input title
         min_value = 0.00,           # Minimum
         max_value = 100.00          # Maximum
    )
-   qs = st.number_input(
+   Quantitative_Skills = st.number_input(
        "Quantitative Skills",   # Input title
         min_value = 0.00,       # Minimum
         max_value = 100.00      # Maximum
    )
-   ats = st.number_input(
+   Abstract_Thinking_Skills = st.number_input(
        "Abstract Thinking Skills",  # Input title
         min_value = 0.00,           # Minimum
         max_value = 100.00          # Maximum
@@ -64,32 +64,32 @@ with c1:
 
 with c2:    
    st.write("### EAT Results")
-   voc = st.number_input(
+   Vocabulary = st.number_input(
        "Vocabulary",        # Input title
         min_value = 0,      # Minimum
         max_value = 100      # Maximum
    )
-   kc = st.number_input(
+   Knowledge_and_Comprehenshion = st.number_input(
        "Knowledge & Comprehension", # Input title
         min_value = 0,              # Minimum
         max_value = 100              # Maximum
    )
-   ar = st.number_input(
+   Abstract_Reasoning = st.number_input(
        "Abstract Reasoning", # Input title
         min_value = 0,       # Minimum
         max_value = 100       # Maximum
    )
-   cs = st.number_input(
+   Computational_Skill = st.number_input(
        "Computational Skill", # Input title
         min_value = 0,        # Minimum
         max_value = 100        # Maximum
    )
-   lr = st.number_input(
+   Logical_Reasoning = st.number_input(
        "Logical Reasoning", # Input title
         min_value = 0,      # Minimum
         max_value = 100      # Maximum
    )
-reg = st.radio(   # CHANGE
+Is_Regular = st.radio(   # CHANGE
      "Are you a regular student?",  # Input title
       ["Yes", "No"],                # Choices
  )
@@ -103,9 +103,9 @@ else:
 predict_call = st.button("Predict")
 
 if predict_call:
-    main_data_x = np.array([[ep, rc, sps, qs, ats, voc, kc, ar, cs, lr, reg]])
+    main_data_x = np.array([[English_Proficiency, Reading_Comprehenshion, Science_Process_Skills, Quantitative_Skills, Abstract_Thinking_Skills, Vocabulary, Knowledge_and_Comprehenshion, Abstract_Reasoning	, Computational_Skill	, Logical_Reasoning, Is_Regular]])
 
     # Make predictions
-    main_predictions = dt_regressor_main.predict(main_data_x)
+    main_predictions = rf_regressor_main.predict(main_data_x)
     percent_prediction = main_predictions * 100
     st.subheader(f"Prediction is: {percent_prediction}%")

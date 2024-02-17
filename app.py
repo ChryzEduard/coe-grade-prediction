@@ -95,10 +95,10 @@ Is_Regular = st.radio(   # CHANGE
  )
 
 
-if reg == 'Yes':
-    reg = 1
+if Is_Regular == 'Yes':
+    Is_Regular = 1
 else:
-    reg = 0
+    Is_Regular = 0
 
 predict_call = st.button("Predict")
 

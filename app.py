@@ -26,7 +26,7 @@ with c1:
         min_value = 0.00,     # Minimum
         max_value = 100.00,    # Maximum
    )
-   Reading_Comprehenshion = st.number_input(
+   Reading_Comprehension = st.number_input(
        "Reading Comprehension", # Input title
         min_value = 0.00,       # Minimum
         max_value = 100.00      # Maximum
@@ -54,7 +54,7 @@ with c2:
         min_value = 0.00,      # Minimum
         max_value = 100.00      # Maximum
    )
-   Knowledge_and_Comprehenshion = st.number_input(
+   Knowledge_and_Comprehension = st.number_input(
        "Knowledge & Comprehension", # Input title
         min_value = 0.00,              # Minimum
         max_value = 100.00              # Maximum

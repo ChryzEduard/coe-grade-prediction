@@ -4,7 +4,7 @@ import numpy as np
 import sklearn
 
 
-# from sklearn.ensemble import RandomForestRegressor
+from sklearn.ensemble import RandomForestRegressor
 
 st.set_page_config(
     menu_items = {},    
@@ -25,26 +25,31 @@ with c1:
        "English Proficiency", # Input title
         min_value = 0.00,     # Minimum
         max_value = 100.00,    # Maximum
+        format="%.2f",
    )
    Reading_Comprehension = st.number_input(
        "Reading Comprehension", # Input title
         min_value = 0.00,       # Minimum
-        max_value = 100.00      # Maximum
+        max_value = 100.00,      # Maximum
+        format="%.2f",
    )
    Science_Process_Skills = st.number_input(
        "Science Process Skills",    # Input title
         min_value = 0.00,           # Minimum
-        max_value = 100.00          # Maximum
+        max_value = 100.00,          # Maximum
+        format="%.2f",
    )
    Quantitative_Skills = st.number_input(
        "Quantitative Skills",   # Input title
         min_value = 0.00,       # Minimum
-        max_value = 100.00      # Maximum
+        max_value = 100.00,      # Maximum
+        format="%.2f",
    )
    Abstract_Thinking_Skills = st.number_input(
        "Abstract Thinking Skills",  # Input title
         min_value = 0.00,           # Minimum
-        max_value = 100.00          # Maximum
+        max_value = 100.00,          # Maximum
+        format="%.2f",
    )
     
 with c2:    
@@ -52,27 +57,32 @@ with c2:
    Vocabulary = st.number_input(
        "Vocabulary",        # Input title
         min_value = 0.00,      # Minimum
-        max_value = 100.00      # Maximum
+        max_value = 100.00,      # Maximum
+        format="%.2f",
    )
    Knowledge_and_Comprehension = st.number_input(
        "Knowledge & Comprehension", # Input title
         min_value = 0.00,              # Minimum
-        max_value = 100.00              # Maximum
+        max_value = 100.00,              # Maximum
+        format="%.2f",
    )
    Abstract_Reasoning = st.number_input(
        "Abstract Reasoning", # Input title
         min_value = 0.00,       # Minimum
-        max_value = 100.00       # Maximum
+        max_value = 100.00,       # Maximum
+        format="%.2f",
    )
    Computational_Skill = st.number_input(
        "Computational Skill", # Input title
         min_value = 0.00,        # Minimum
-        max_value = 100.00        # Maximum
+        max_value = 100.00,        # Maximum
+        format="%.2f",
    )
    Logical_Reasoning = st.number_input(
        "Logical Reasoning", # Input title
         min_value = 0.00,      # Minimum
-        max_value = 100.00      # Maximum
+        max_value = 100.00,      # Maximum
+        format="%.2f",
    )
 
 

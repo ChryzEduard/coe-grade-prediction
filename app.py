@@ -13,13 +13,7 @@ st.set_page_config(
     layout = "wide",
 )
 
-def load_eng_model():
-    with open("rf_eng_model.pkl", "rb") as file:
-        eng_model = pickle.load(file)
-    return eng_model
 
-
-dt_regressor_main = load_eng_model()
 
 ## EnglishProficiency	ReadingComprehenshion	ScienceProcessSkills	QuantitativeSkills	AbstractThinkingSkills	
 ## Vocabulary	Knowledge&Comprehenshion	AbstractReasoning	ComputationalSkill	LogicalReasoning
@@ -66,46 +60,62 @@ with c2:
    st.write("### EAT Results")
    Vocabulary = st.number_input(
        "Vocabulary",        # Input title
-        min_value = 0,      # Minimum
-        max_value = 100      # Maximum
+        min_value = 0.00,      # Minimum
+        max_value = 100.00      # Maximum
    )
    Knowledge_and_Comprehenshion = st.number_input(
        "Knowledge & Comprehension", # Input title
-        min_value = 0,              # Minimum
-        max_value = 100              # Maximum
+        min_value = 0.00,              # Minimum
+        max_value = 100.00              # Maximum
    )
    Abstract_Reasoning = st.number_input(
        "Abstract Reasoning", # Input title
-        min_value = 0,       # Minimum
-        max_value = 100       # Maximum
+        min_value = 0.00,       # Minimum
+        max_value = 100.00       # Maximum
    )
    Computational_Skill = st.number_input(
        "Computational Skill", # Input title
-        min_value = 0,        # Minimum
-        max_value = 100        # Maximum
+        min_value = 0.00,        # Minimum
+        max_value = 100.00        # Maximum
    )
    Logical_Reasoning = st.number_input(
        "Logical Reasoning", # Input title
-        min_value = 0,      # Minimum
-        max_value = 100      # Maximum
+        min_value = 0.00,      # Minimum
+        max_value = 100.00      # Maximum
    )
-Is_Regular = st.radio(   # CHANGE
-     "Are you a regular student?",  # Input title
-      ["Yes", "No"],                # Choices
- )
+# Is_Regular = st.radio(   # CHANGE
+#      "Are you a regular student?",  # Input title
+#       ["Yes", "No"],                # Choices
+#  )
+
+# reg_data = 0.0
+
+# if Is_Regular == 'Yes':
+#     reg_data = 1.0
+# else:
+#     reg_data = 0.0
 
 
-if Is_Regular == 'Yes':
-    Is_Regular = 1
-else:
-    Is_Regular = 0
 
 predict_call = st.button("Predict")
 
+model = pickle.load(open("rf_student_grade_modelv2.pkl", "rb"))
+print(model)
+
+# def load_eng_model():
+#     with open("rf_student_model2.pkl", "rb") as file:
+#         eng_model = pickle.load(file)
+#     return eng_model
+
+
+# dt_regressor_main = load_eng_model()
+
 if predict_call:
-    main_data_x = np.array([[English_Proficiency, Reading_Comprehenshion, Science_Process_Skills, Quantitative_Skills, Abstract_Thinking_Skills, Vocabulary, Knowledge_and_Comprehenshion, Abstract_Reasoning	, Computational_Skill	, Logical_Reasoning, Is_Regular]])
+    main_data_x = np.array([[English_Proficiency, Reading_Comprehenshion, Science_Process_Skills, Quantitative_Skills, Abstract_Thinking_Skills, Vocabulary, Knowledge_and_Comprehenshion, Abstract_Reasoning, Computational_Skill, Logical_Reasoning]])
+
 
     # Make predictions
-    main_predictions = dt_regressor_main.predict(main_data_x)
+    main_predictions = model.predict(main_data_x)
     percent_prediction = main_predictions * 100
-    st.subheader(f"Prediction is: {percent_prediction}%")
+    prediction_str = "{:.0f}".format(percent_prediction[0])
+    st.subheader(f"Prediction is: {prediction_str}% probability of passing the board exam")

@@ -5,7 +5,6 @@ import sklearn
 
 
 from sklearn.ensemble import RandomForestRegressor
-##dtree = DecisionTreeClassifier
 
 st.set_page_config(
     menu_items = {},    
@@ -13,13 +12,6 @@ st.set_page_config(
     page_icon = "book",
     layout = "wide",
 )
-
-
-
-## EnglishProficiency	ReadingComprehenshion	ScienceProcessSkills	QuantitativeSkills	AbstractThinkingSkills	
-## Vocabulary	Knowledge&Comprehenshion	AbstractReasoning	ComputationalSkill	LogicalReasoning
-
-
 
 st.write("""
 # College of Engineering
@@ -54,9 +46,7 @@ with c1:
         min_value = 0.00,           # Minimum
         max_value = 100.00          # Maximum
    )
-   # ep, rc, sps, qs, ats
-   # v, kc, ar, cs, lr
-
+    
 with c2:    
    st.write("### EAT Results")
    Vocabulary = st.number_input(
@@ -84,35 +74,17 @@ with c2:
         min_value = 0.00,      # Minimum
         max_value = 100.00      # Maximum
    )
-# Is_Regular = st.radio(   # CHANGE
-#      "Are you a regular student?",  # Input title
-#       ["Yes", "No"],                # Choices
-#  )
-
-# reg_data = 0.0
-
-# if Is_Regular == 'Yes':
-#     reg_data = 1.0
-# else:
-#     reg_data = 0.0
 
 
 
 predict_call = st.button("Predict")
 
-model = pickle.load(open("2model.pkl", "rb"))
+model = pickle.load(open("model.pkl", "rb"))
 print(model)
 
-# def load_eng_model():
-#     with open("rf_student_model2.pkl", "rb") as file:
-#         eng_model = pickle.load(file)
-#     return eng_model
-
-
-# dt_regressor_main = load_eng_model()
 
 if predict_call:
-    main_data_x = np.array([[English_Proficiency, Reading_Comprehenshion, Science_Process_Skills, Quantitative_Skills, Abstract_Thinking_Skills, Vocabulary, Knowledge_and_Comprehenshion, Abstract_Reasoning, Computational_Skill, Logical_Reasoning]])
+    main_data_x = np.array([[English_Proficiency, Reading_Comprehension, Science_Process_Skills, Quantitative_Skills, Abstract_Thinking_Skills, Vocabulary, Knowledge_and_Comprehension, Abstract_Reasoning, Computational_Skill, Logical_Reasoning]])
 
 
     # Make predictions

@@ -89,7 +89,7 @@ with c2:
 
 predict_call = st.button("Predict")
 
-model = pickle.load(open("model.pkl", "rb"))
+model = pickle.load(open("rf_student_grade_modelv2.pkl", "rb"))
 print(model)
 
 

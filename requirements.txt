@@ -1,6 +1,5 @@
 scikit-learn==1.2.1
 streamlit
-scikit-learn
 numpy
 pandas
 matplotlib

@@ -88,7 +88,8 @@ with c2:
 
 
 predict_call = st.button("Predict")
-model = pickle.load(open("2model.pkl", "rb"))
+model = pickle.load(open("rfc_student_grade_model.pkl", "rb"))
+# model = pickle.load(open("2model.pkl", "rb"))
 # model = pickle.load(open("rf_student_grade_modelv2.pkl", "rb"))
 print(model)
 
@@ -99,6 +100,7 @@ if predict_call:
 
     # Make predictions
     main_predictions = model.predict(main_data_x)
-    percent_prediction = main_predictions * 100
-    prediction_str = "{:.0f}".format(percent_prediction[0])
-    st.subheader(f"Prediction is: {prediction_str}% probability of passing the board exam")
+    st.subheader(f"Prediction is: {main_prediction} probability of passing the board exam")
+    # percent_prediction = main_predictions * 100
+    # prediction_str = "{:.0f}".format(percent_prediction[0])
+    # st.subheader(f"Prediction is: {prediction_str}% probability of passing the board exam")

@@ -4,6 +4,7 @@ import numpy as np
 import sklearn
 
 from sklearn.ensemble import RandomForestClassifier
+from joblib import dump, load
 # from sklearn.ensemble import RandomForestRegressor
 
 st.set_page_config(

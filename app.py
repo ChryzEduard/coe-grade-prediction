@@ -97,10 +97,16 @@ print(model)
 if predict_call:
     main_data_x = np.array([[English_Proficiency, Reading_Comprehension, Science_Process_Skills, Quantitative_Skills, Abstract_Thinking_Skills, Vocabulary, Knowledge_and_Comprehension, Abstract_Reasoning, Computational_Skill, Logical_Reasoning]])
 
-
     # Make predictions
     main_predictions = model.predict(main_data_x)
-    st.subheader(f"Prediction is: {main_prediction} probability of passing the board exam")
-    # percent_prediction = main_predictions * 100
-    # prediction_str = "{:.0f}".format(percent_prediction[0])
-    # st.subheader(f"Prediction is: {prediction_str}% probability of passing the board exam")
+    st.subheader(f"Prediction is: {main_predictions[0]} probability of passing the board exam")
+# if predict_call:
+#     main_data_x = np.array([[English_Proficiency, Reading_Comprehension, Science_Process_Skills, Quantitative_Skills, Abstract_Thinking_Skills, Vocabulary, Knowledge_and_Comprehension, Abstract_Reasoning, Computational_Skill, Logical_Reasoning]])
+
+
+#     # Make predictions
+#     main_predictions = model.predict(main_data_x)
+#     st.subheader(f"Prediction is: {main_prediction} probability of passing the board exam")
+#     # percent_prediction = main_predictions * 100
+#     # prediction_str = "{:.0f}".format(percent_prediction[0])
+#     # st.subheader(f"Prediction is: {prediction_str}% probability of passing the board exam")

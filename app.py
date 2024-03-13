@@ -93,7 +93,7 @@ predict_call = st.button("Predict")
 # model = pickle.load(open("rfc_student_grade_model2.pkl", "rb"))
 # model = pickle.load(open("2model.pkl", "rb"))
 # model = pickle.load(open("rf_student_grade_modelv2.pkl", "rb"))
-print(model)
+# print(model)
 
 if predict_call:
     input_data = pd.DataFrame({

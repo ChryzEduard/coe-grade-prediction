@@ -96,7 +96,7 @@ print(model)
 if predict_call:
     main_data_x = np.array([[English_Proficiency, Reading_Comprehension, Science_Process_Skills, Quantitative_Skills, Abstract_Thinking_Skills, Vocabulary, Knowledge_and_Comprehension, Abstract_Reasoning, Computational_Skill, Logical_Reasoning]])
 
-     st.write("Input", main_data_x) 
+    st.write("Input", main_data_x) 
 #     # Make predictions
 #     main_predictions = model.predict(main_data_x)
 #     st.subheader(f"Prediction is: {main_predictions[0]} probability of passing the board exam")

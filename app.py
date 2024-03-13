@@ -89,31 +89,14 @@ with c2:
 
 
 predict_call = st.button("Predict")
-# model = load("rfc_student_grade_model2.joblib")
-# model = pickle.load(open("rfc_student_grade_model2.pkl", "rb"))
-# model = pickle.load(open("2model.pkl", "rb"))
-# model = pickle.load(open("rf_student_grade_modelv2.pkl", "rb"))
-# print(model)
+model = pickle.load(open("2model.pkl", "rb"))
+print(model)
+
 
 if predict_call:
-    input_data = pd.DataFrame({
-        'English Proficiency': [English_Proficiency],
-        'Reading Comprehension': [Reading_Comprehension],
-        'Science Process Skills': [Science_Process_Skills],
-        'Quantitative Skills': [Quantitative_Skills],
-        'Abstract Thinking Skills': [Abstract_Thinking_Skills],
-        'Vocabulary': [Vocabulary],
-        'Knowledge and Comprehension': [Knowledge_and_Comprehension],
-        'Abstract Reasoning': [Abstract_Reasoning],
-        'Computational Skill': [Computational_Skill],
-        'Logical Reasoning': [Logical_Reasoning],
-    })
-    st.write("Input", input_data) 
+    main_data_x = np.array([[English_Proficiency, Reading_Comprehension, Science_Process_Skills, Quantitative_Skills, Abstract_Thinking_Skills, Vocabulary, Knowledge_and_Comprehension, Abstract_Reasoning, Computational_Skill, Logical_Reasoning]])
 
-
-# if predict_call:
-#     main_data_x = np.array([[English_Proficiency, Reading_Comprehension, Science_Process_Skills, Quantitative_Skills, Abstract_Thinking_Skills, Vocabulary, Knowledge_and_Comprehension, Abstract_Reasoning, Computational_Skill, Logical_Reasoning]])
-
+     st.write("Input", main_data_x) 
 #     # Make predictions
 #     main_predictions = model.predict(main_data_x)
 #     st.subheader(f"Prediction is: {main_predictions[0]} probability of passing the board exam")

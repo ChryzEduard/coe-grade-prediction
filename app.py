@@ -97,7 +97,6 @@ if predict_call:
 
     # Make predictions
     main_predictions = model.predict(main_data_x)
-    st.subheader(f"Prediction is: {main_prediction} probability of passing the board exam")
     percent_prediction = main_predictions * 100
     prediction_str = "{:.0f}".format(percent_prediction[0])
     st.subheader(f"Prediction is: {prediction_str}% probability of passing the board exam")

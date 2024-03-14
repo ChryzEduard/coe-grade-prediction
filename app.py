@@ -57,31 +57,31 @@ with c2:
        "Vocabulary",        # Input title
         min_value = 0,      # Minimum
         max_value = 100,      # Maximum
-        # format="%.2f",
+        format="%.2f",
    )
    Knowledge_and_Comprehension = st.number_input(
        "Knowledge & Comprehension", # Input title
         min_value = 0,              # Minimum
         max_value = 100,              # Maximum
-        # format="%.2f",
+        format="%.2f",
    )
    Abstract_Reasoning = st.number_input(
        "Abstract Reasoning", # Input title
         min_value = 0,       # Minimum
         max_value = 100,       # Maximum
-        # format="%.2f",
+        format="%.2f",
    )
    Computational_Skill = st.number_input(
        "Computational Skill", # Input title
         min_value = 0,        # Minimum
         max_value = 100,        # Maximum
-        # format="%.2f",
+        format="%.2f",
    )
    Logical_Reasoning = st.number_input(
        "Logical Reasoning", # Input title
         min_value = 0,      # Minimum
         max_value = 100,      # Maximum
-        # format="%.2f",
+        format="%.2f",
    )
 
 

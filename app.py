@@ -5,6 +5,7 @@ import sklearn
 
 from sklearn.ensemble import RandomForestRegressor
 
+# The code on the webpage metadata like tab title, tab icon, etc.
 st.set_page_config(
     menu_items = {},    
     page_title = "Engineering Prediction",
@@ -12,11 +13,13 @@ st.set_page_config(
     layout = "wide",
 )
 
+# Webpage title
 st.write("""
 # College of Engineering
 Prediction of Students Success in Engineering Board Exams
          """)
 
+#Input fields
 c1, c2 = st.columns(2)
 with c1:
    st.write("### CET Results")

@@ -100,7 +100,7 @@ if predict_call:
     percent_prediction = main_predictions * 100
     prediction_str = "{:.0f}".format(percent_prediction[0])
     st.subheader(f"Prediction is: {prediction_str}% probability of passing the board exam")
-    if prediction_str >= 70:
+    if percent_prediction >= 70:
         st.subheader(f"High likelihood of passing")
     else:
         st.subheader(f"High likelihood of failing")
